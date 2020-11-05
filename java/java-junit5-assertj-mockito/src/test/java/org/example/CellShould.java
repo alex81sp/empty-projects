@@ -9,24 +9,20 @@ import static org.example.CellStatus.DEAD;
 
 class CellShould {
 
-    @DisplayName("alive cell with < 2 neighbours should die")
+    private static final int ONE_LIVING_NEIGHBOUR = 1;
+    private static final int TWO_LIVING_NEIGHBOURS = 2;
+    private static final int THREE_LIVING_NEIGHBOURS = 3;
+
+    @DisplayName("live cell with < 2 neighbours should die")
     @Test
     void underpopulationApplies() {
-        final int livingNeighbours = 1;
-
-        CellStatus actualStatus = ALIVE.generate(livingNeighbours);
-
-        assertThat(actualStatus).isEqualTo(DEAD);
+        assertThat(ALIVE.generate(ONE_LIVING_NEIGHBOUR)).isEqualTo(DEAD);
     }
 
-    @DisplayName("alive cell with >= 2 neighbours should keep alive ")
+    @DisplayName("live cell with 2 or 3 neighbours should keep alive ")
     @Test
-    void underpopulationNotApplies() {
-
-        final int livingNeighbours = 2;
-        CellStatus actualStatus = ALIVE.generate(livingNeighbours);
-
-        assertThat(actualStatus).isEqualTo(ALIVE);
+    void keepAlive() {
+        assertThat(ALIVE.generate(TWO_LIVING_NEIGHBOURS)).isEqualTo(ALIVE);
+        assertThat(ALIVE.generate(THREE_LIVING_NEIGHBOURS)).isEqualTo(ALIVE);
     }
-
 }
