@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.example.CellStatus.ALIVE;
 import static org.example.CellStatus.DEAD;
 
-class CellShould {
+class CellTest {
 
     private static final int ONE_LIVING_NEIGHBOUR = 1;
     private static final int TWO_LIVING_NEIGHBOURS = 2;
