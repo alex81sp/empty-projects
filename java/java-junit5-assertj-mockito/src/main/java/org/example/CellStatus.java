@@ -4,17 +4,13 @@ public enum CellStatus {
     ALIVE {
         @Override
         public CellStatus generate(int livingNeighbours) {
-            if (livingNeighbours > 3) return DEAD;
-            if (livingNeighbours < 2) {
-                return DEAD;
-            } else
-                return ALIVE;
+            return livingNeighbours == 2 || livingNeighbours == 3 ? ALIVE : DEAD;
         }
     },
     DEAD {
         @Override
         public CellStatus generate(int livingNeighbours) {
-            return DEAD;
+            return livingNeighbours == 3 ? ALIVE : DEAD;
         }
     };
 

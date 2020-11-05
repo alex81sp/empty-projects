@@ -32,4 +32,18 @@ class CellShould {
     void dieWithMoreThanThree(){
         assertThat(ALIVE.generate(FOUR_LIVING_NEIGHBOURS)).isEqualTo(DEAD);
     }
+
+    @DisplayName("dead cell with == 3 live neighbours becomes a live cell, as if by reproduction")
+    @Test
+    void deadCellWithThreeLives(){
+        assertThat(DEAD.generate(THREE_LIVING_NEIGHBOURS)).isEqualTo(ALIVE);
+    }
+
+    @DisplayName("dead cell with != 3 live neighbours becomes a live cell, as if by reproduction")
+    @Test
+    void deadCellWithNotThreeLives(){
+        assertThat(DEAD.generate(TWO_LIVING_NEIGHBOURS)).isEqualTo(DEAD);
+        assertThat(DEAD.generate(FOUR_LIVING_NEIGHBOURS)).isEqualTo(DEAD);
+    }
+
 }
