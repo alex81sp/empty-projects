@@ -4,6 +4,7 @@ public enum CellStatus {
     ALIVE {
         @Override
         public CellStatus generate(int livingNeighbours) {
+            if (livingNeighbours > 3) return DEAD;
             if (livingNeighbours < 2) {
                 return DEAD;
             } else
