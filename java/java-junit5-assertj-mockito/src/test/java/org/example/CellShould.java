@@ -31,4 +31,14 @@ class CellShould {
         assertThat(givenAliveCell.getStatus()).isEqualTo(DEAD);
     }
 
+    @Test
+    void aliveCellShouldKeepAliveByUnderpopulation() {
+        final Cell givenAliveCell = new Cell(ALIVE);
+
+        final int livingNeighbours = 2;
+        givenAliveCell.generate(livingNeighbours);
+
+        assertThat(givenAliveCell.getStatus()).isEqualTo(ALIVE);
+    }
+
 }

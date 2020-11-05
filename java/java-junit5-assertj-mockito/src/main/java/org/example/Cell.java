@@ -12,7 +12,10 @@ public class Cell {
     }
 
     public void generate(int livingNeighbours) {
-        this.status = Status.DEAD;
+        if (livingNeighbours < 2) {
+            this.status = Status.DEAD;
+        }else
+            this.status = Status.ALIVE;
     }
 
     enum Status {
