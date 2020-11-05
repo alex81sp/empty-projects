@@ -1,2 +1,5 @@
-package org.example;public class Main {
+package org.example;
+
+public class Main {
+
 }
