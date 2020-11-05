@@ -3,42 +3,27 @@ package org.example;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.example.Cell.Status.*;
+import static org.example.CellStatus.ALIVE;
+import static org.example.CellStatus.DEAD;
 
 class CellShould {
 
     @Test
-    void beAliveWhenInitialStateAlive() {
-        final Cell givenAliveCell = new Cell(ALIVE);
-
-        assertThat(givenAliveCell.getStatus()).isEqualTo(ALIVE);
-    }
-
-    @Test
-    void beNotAliveWhenInitialStateDead() {
-        final Cell givenDeadCell = new Cell(DEAD);
-
-        assertThat(givenDeadCell.getStatus()).isEqualTo(DEAD);
-    }
-
-    @Test
     void aliveCellShouldDieByUnderpopulation() {
-        final Cell givenAliveCell = new Cell(ALIVE);
-
         final int livingNeighbours = 1;
-        givenAliveCell.generate(livingNeighbours);
 
-        assertThat(givenAliveCell.getStatus()).isEqualTo(DEAD);
+        CellStatus actualStatus = ALIVE.generate(livingNeighbours);
+
+        assertThat(actualStatus).isEqualTo(DEAD);
     }
 
     @Test
     void aliveCellShouldKeepAliveByUnderpopulation() {
-        final Cell givenAliveCell = new Cell(ALIVE);
 
         final int livingNeighbours = 2;
-        givenAliveCell.generate(livingNeighbours);
+        CellStatus actualStatus = ALIVE.generate(livingNeighbours);
 
-        assertThat(givenAliveCell.getStatus()).isEqualTo(ALIVE);
+        assertThat(actualStatus).isEqualTo(ALIVE);
     }
 
 }
