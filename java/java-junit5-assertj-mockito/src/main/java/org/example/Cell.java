@@ -1,15 +1,18 @@
 package org.example;
 
+import lombok.Data;
+
+@Data
 public class Cell {
 
-    private final Status status;
+    private Status status;
 
     public Cell(Status status) {
         this.status = status;
     }
 
-    public boolean isAlive() {
-        return status == Status.ALIVE;
+    public void generate(int livingNeighbours) {
+        this.status = Status.DEAD;
     }
 
     enum Status {
