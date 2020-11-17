@@ -1,7 +1,8 @@
-import org.junit.jupiter.api.Assertions.*
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.shouldBe
 
-internal class ExampleTest {
-
-    fun x() {
+class ExampleTest : StringSpec({
+    "this is a failing test" {
+        Example().sayHello() shouldBe "bye bye"
     }
-}
+})
